@@ -1,0 +1,32 @@
+Sencillo script para importar y analizar datos estadísticos de Libre Office Calc,
+proveyendo el histograma,la distribución normal que más se ajusta a este,
+la mediana, media y distribución estándar partiendo de un array de datos de 
+1 dimensión .
+
+El formato en el que deben estar los datos en la hoja de cálculo es:
+      Fila 1  (.........)
+      Fila 2  (Títulos)
+           .
+           .   (Datos)
+           .
+           .
+Antes de ejecutar el script, hay que abrir LibreOffice con el siguiente comando:
+$ libreoffice --calc [ubicación del archivo] --accept="socket,host=localhost,port=2002;urp;StarOffice.ServiceManager"
+Sustituir [ubicación del archivo] por el archivo a analizar, por ejemplo:
+
+$ libreoffice --calc ~/Documentos/estadisticas.ods --accept="socket,host=localhost,port=2002;urp;StarOffice.ServiceManager"
+   
+    
+Uso :[python DNeel.py cabecero datos
+
+En el primer comando se indica qué columna usar (por ejemplo "Enero") y en el
+segundo el número de datos a analizar de esa columna, empezando por la siguiente
+al título (por ejemplo 31)
+
+ejemplo de llamada: python python DNeel.py Enero 31
+
+licencia: GPL3
+
+version: 0.1
+
+Más información en: www.elelectronlibre.wordpress.com
