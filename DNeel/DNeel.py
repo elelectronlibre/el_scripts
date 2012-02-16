@@ -30,6 +30,7 @@ al título (por ejemplo 31). El tercero indica las divisiones que se desea tener
 en el histograma (cuartiles, deciles...). Si se utiliza all, se hará una barra
 por dato.
 
+
 ejemplo de llamada: python python DNeel.py Enero 31
 
 licencia: GPL3
