@@ -17,13 +17,16 @@ Sustituir [ubicación del archivo] por el archivo a analizar, por ejemplo:
 $ libreoffice --calc ~/Documentos/estadisticas.ods --accept="socket,host=localhost,port=2002;urp;StarOffice.ServiceManager"
    
     
-Uso : python DNeel.py [cabecero] [datos]
+    Uso :python DNeel.py [cabecero] [datos] [divisiones]
 
 En el primer comando se indica qué columna usar (por ejemplo "Enero") y en el
 segundo el número de datos a analizar de esa columna, empezando por la siguiente
-al título (por ejemplo 31)
+al título (por ejemplo 31). El tercero indica las divisiones que se desea tener
+en el histograma (cuartiles, deciles...). Si se utiliza all, se hará una barra
+por dato.
 
-ejemplo de llamada: python DNeel.py Enero 31
+
+ejemplo de llamada: python python DNeel.py Enero 31
 
 licencia: GPL3
 
