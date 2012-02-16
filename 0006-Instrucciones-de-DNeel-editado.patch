@@ -1,0 +1,32 @@
+From 743049e3b1b77546a1c597861fba2938a7cd0630 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20Rodr=C3=ADguez?= <electronlibre88@gmail.com>
+Date: Tue, 14 Feb 2012 12:21:54 +0100
+Subject: [PATCH 6/9] Instrucciones de DNeel-editado
+
+---
+ DNeel/README |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/DNeel/README b/DNeel/README
+index d869370..eb1ccc8 100644
+--- a/DNeel/README
++++ b/DNeel/README
+@@ -17,13 +17,13 @@ Sustituir [ubicación del archivo] por el archivo a analizar, por ejemplo:
+ $ libreoffice --calc ~/Documentos/estadisticas.ods --accept="socket,host=localhost,port=2002;urp;StarOffice.ServiceManager"
+    
+     
+-Uso :[python DNeel.py cabecero datos
++Uso : python DNeel.py [cabecero] [datos]
+ 
+ En el primer comando se indica qué columna usar (por ejemplo "Enero") y en el
+ segundo el número de datos a analizar de esa columna, empezando por la siguiente
+ al título (por ejemplo 31)
+ 
+-ejemplo de llamada: python python DNeel.py Enero 31
++ejemplo de llamada: python DNeel.py Enero 31
+ 
+ licencia: GPL3
+ 
+-- 
+1.7.5.4
+

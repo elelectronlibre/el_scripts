@@ -1,0 +1,52 @@
+From f708aa94888a5cdfe582305b13b44a1857da8282 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20Rodr=C3=ADguez?= <electronlibre88@gmail.com>
+Date: Tue, 14 Feb 2012 12:18:00 +0100
+Subject: [PATCH 5/9] Instrucciones de DNeel
+
+---
+ DNeel/README |   32 ++++++++++++++++++++++++++++++++
+ 1 files changed, 32 insertions(+), 0 deletions(-)
+ create mode 100644 DNeel/README
+
+diff --git a/DNeel/README b/DNeel/README
+new file mode 100644
+index 0000000..d869370
+--- /dev/null
++++ b/DNeel/README
+@@ -0,0 +1,32 @@
++Sencillo script para importar y analizar datos estadísticos de Libre Office Calc,
++proveyendo el histograma,la distribución normal que más se ajusta a este,
++la mediana, media y distribución estándar partiendo de un array de datos de 
++1 dimensión .
++
++El formato en el que deben estar los datos en la hoja de cálculo es:
++      Fila 1  (.........)
++      Fila 2  (Títulos)
++           .
++           .   (Datos)
++           .
++           .
++Antes de ejecutar el script, hay que abrir LibreOffice con el siguiente comando:
++$ libreoffice --calc [ubicación del archivo] --accept="socket,host=localhost,port=2002;urp;StarOffice.ServiceManager"
++Sustituir [ubicación del archivo] por el archivo a analizar, por ejemplo:
++
++$ libreoffice --calc ~/Documentos/estadisticas.ods --accept="socket,host=localhost,port=2002;urp;StarOffice.ServiceManager"
++   
++    
++Uso :[python DNeel.py cabecero datos
++
++En el primer comando se indica qué columna usar (por ejemplo "Enero") y en el
++segundo el número de datos a analizar de esa columna, empezando por la siguiente
++al título (por ejemplo 31)
++
++ejemplo de llamada: python python DNeel.py Enero 31
++
++licencia: GPL3
++
++version: 0.1
++
++Más información en: www.elelectronlibre.wordpress.com
+\ No newline at end of file
+-- 
+1.7.5.4
+

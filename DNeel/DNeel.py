@@ -22,11 +22,13 @@ Sustituir [ubicación del archivo] por el archivo a analizar, por ejemplo:
 $ libreoffice --calc ~/Documentos/estadisticas.ods --accept="socket,host=localhost,port=2002;urp;StarOffice.ServiceManager"
    
     
-Uso :[python DNeel.py cabecero datos
+    Uso :python DNeel.py [cabecero] [datos] [divisiones]
 
 En el primer comando se indica qué columna usar (por ejemplo "Enero") y en el
 segundo el número de datos a analizar de esa columna, empezando por la siguiente
-al título (por ejemplo 31)
+al título (por ejemplo 31). El tercero indica las divisiones que se desea tener
+en el histograma (cuartiles, deciles...). Si se utiliza all, se hará una barra
+por dato.
 
 ejemplo de llamada: python python DNeel.py Enero 31
 
@@ -49,7 +51,7 @@ import re
 import sys
 
 datos = []
-def parsestats(titulo,cantidad):
+def parsestats(titulo,cantidad,divisiones):
     for column in S('Dias.b2:k2').columns:
         if re.search(column.string, titulo):
             match = re.search(r'.(\w)(\d)',str(column))
@@ -67,12 +69,17 @@ def parsestats(titulo,cantidad):
         print row
         print row.value
     # the histogram of the data
-    n, bins, patches = plt.hist(datos, max(datos)-min(datos), facecolor='orange', alpha=0.75)
+    if sys.argv[3] == 'all':
+        n, bins, patches = plt.hist(datos, max(datos)-min(datos), facecolor='orange', alpha=0.75)
+    else:
+        print 'Mostrando el histograma en ' + str(divisiones)+ ' divisiones'
+        n, bins, patches = plt.hist(datos, int(divisiones), facecolor='orange', alpha=0.75)
+    print 'bins = ' + str(bins)
     mediana = np.median(datos)
     mu = np.mean(datos)
     sigma = np.std(datos)
     # add a 'best fit' line
-    y = max(datos)*mlab.normpdf( bins, mu, sigma)
+    y = max(datos)*mlab.normpdf(bins, mu, sigma)
     #dnmedia = max(datos)*mlab.normpdf( bins, media, sigma)
     plt.plot(bins, y, 'b--', linewidth=1)
     plt.axvline(mediana, linestyle = '--',color = 'red', linewidth=1)
@@ -91,10 +98,11 @@ def parsestats(titulo,cantidad):
 
 print sys.argv[1]
 print sys.argv[2]
+print sys.argv[3]
 if sys.argv[1] == 'help':
     print 'Programa para analizar datos estadísticos, proveyendo el histograma,\
     la distribución normal que más se ajusta a este, la mediana, media y \
-    distribución estándar. Uso :[python DNel.py titulo cantidad]'
+    distribución estándar. Uso :[python DNel.py titulo cantidad divisiones]'
 else:
     print '\
     DNeel v = 0.1 \n \
@@ -102,6 +110,6 @@ else:
     blog: elelectronlibre.wordpress.com \n \
     licencia: GPL 3 \n \
     fecha: 13/2/2012'
-    parsestats(sys.argv[1],sys.argv[2])
+    parsestats(sys.argv[1],sys.argv[2],sys.argv[3])
 
 
